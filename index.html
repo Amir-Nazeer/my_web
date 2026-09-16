@@ -1,317 +1,660 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Assignment</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<title>Radianz Skincare | Professional Skincare & Laser Treatments</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+	<!-- Bootstrap 5.3.3 CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 	<style type="text/css">
-		.bgheader{
-			background-image: url(her0-bottom-left.png),url(leafs.png);
-			background-repeat: no-repeat;
-			background-position: bottom left, bottom right;
-			background-size: 240px,400px;
+		:root {
+			--gold-primary: #d4af37;
+			--gold-hover: #b89125;
+			--gold-light: #f7edd1;
+			--gold-gradient: linear-gradient(135deg, #f5d78e 0%, #d4af37 50%, #aa8222 100%);
+			--dark-bg: #0d0e11;
+			--dark-surface: #17191e;
+			--dark-card: #1f2128;
+			--border-light: rgba(255, 255, 255, 0.08);
+			--text-muted-custom: #a2a8b5;
 		}
-		.bgmiddle{
-			background-image: url(bottom-shape.png);
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+			scroll-padding-top: 85px;
+		}
+
+		body {
+			font-family: 'Plus Jakarta Sans', sans-serif;
+			color: #2b2f38;
+			background-color: #ffffff;
+			overflow-x: hidden;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1, h2, h3, .heading-serif {
+			font-family: 'Playfair Display', serif;
+			letter-spacing: -0.02em;
+		}
+
+		/* Custom Gold Utilities */
+		.text-gold {
+			color: var(--gold-primary) !important;
+		}
+
+		.text-gold-gradient {
+			background: var(--gold-gradient);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			display: inline-block;
+		}
+
+		.bg-gold {
+			background: var(--gold-gradient) !important;
+			color: #111111 !important;
+		}
+
+		.btn-gold {
+			background: var(--gold-gradient);
+			color: #0f1012 !important;
+			font-weight: 600;
+			border: none;
+			border-radius: 50rem;
+			box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+			transition: all 0.3s ease;
+		}
+
+		.btn-gold:hover {
+			background: linear-gradient(135deg, #e5bf4c 0%, #c49a1d 100%);
+			transform: translateY(-2px);
+			box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+		}
+
+		.btn-outline-gold {
+			border: 2px solid var(--gold-primary);
+			color: var(--gold-primary);
+			background: transparent;
+			border-radius: 50rem;
+			font-weight: 600;
+			transition: all 0.3s ease;
+		}
+
+		.btn-outline-gold:hover {
+			background-color: var(--gold-primary);
+			color: #0d0e11 !important;
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+		}
+
+		.gold-divider {
+			width: 60px;
+			height: 3px;
+			background: var(--gold-gradient);
+			border-radius: 3px;
+		}
+
+		/* Navbar */
+		.navbar {
+			background-color: rgba(13, 14, 17, 0.96) !important;
+			backdrop-filter: blur(12px);
+			transition: all 0.3s ease;
+		}
+
+		.navbar-logo {
+			height: 54px;
+			width: auto;
+			max-width: 170px;
+			object-fit: contain;
+			transition: transform 0.3s ease;
+		}
+
+		.navbar-logo:hover {
+			transform: scale(1.03);
+		}
+
+		.nav-link {
+			color: #e5e7eb !important;
+			font-weight: 500;
+			padding: 0.5rem 1rem !important;
+			transition: color 0.25s ease, transform 0.25s ease;
+			position: relative;
+		}
+
+		.nav-link:hover {
+			color: var(--gold-primary) !important;
+		}
+
+		.custom-toggler {
+			border: 1.5px solid var(--gold-primary) !important;
+			padding: 6px 12px;
+			border-radius: 8px;
+			transition: all 0.2s ease;
+		}
+
+		.custom-toggler:focus {
+			box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.3);
+		}
+
+		.custom-toggler .navbar-toggler-icon {
+			background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23d4af37' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+		}
+
+		/* Background patterns */
+		.bgheader {
+			background-color: var(--dark-bg);
+			background-image: url('her0-bottom-left.png'), url('leafs.png');
+			background-repeat: no-repeat, no-repeat;
+			background-position: bottom left, bottom right;
+			background-size: 200px auto, 340px auto;
+		}
+
+		.bgmiddle {
+			background-color: var(--dark-bg);
+			background-image: url('bottom-shape.png');
 			background-repeat: no-repeat;
 			background-position: bottom center;
-			background-size: 25%;
+			background-size: min(350px, 50%);
 		}
 
-	</style>
+		/* Responsive Hero */
+		.hero-title {
+			font-size: clamp(2rem, 4.2vw, 3.4rem);
+			line-height: 1.15;
+		}
 
+		.hero-img {
+			width: 100%;
+			max-height: 480px;
+			object-fit: cover;
+			box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.2);
+			transition: transform 0.4s ease;
+		}
+
+		.hero-img:hover {
+			transform: scale(1.015);
+		}
+
+		/* Treatment Cards */
+		.treatment-card {
+			background: #ffffff;
+			border: 1px solid rgba(0, 0, 0, 0.08);
+			transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+		}
+
+		.treatment-card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 18px 30px rgba(0, 0, 0, 0.08) !important;
+			border-color: rgba(212, 175, 55, 0.4);
+		}
+
+		.treatment-img {
+			width: 100%;
+			height: 190px;
+			object-fit: cover;
+			border-radius: 8px;
+		}
+
+		.badge-floating {
+			backdrop-filter: blur(4px);
+			letter-spacing: 0.04em;
+			font-size: 0.72rem;
+			padding: 4px 10px;
+		}
+
+		/* Why Choose Us Feature Item */
+		.feature-item {
+			background: rgba(255, 255, 255, 0.03);
+			border: 1px solid rgba(255, 255, 255, 0.06);
+			transition: all 0.3s ease;
+		}
+
+		.feature-item:hover {
+			background: rgba(255, 255, 255, 0.06);
+			border-color: rgba(212, 175, 55, 0.3);
+			transform: translateX(4px);
+		}
+
+		.feature-icon-wrapper {
+			width: 58px;
+			height: 58px;
+			min-width: 58px;
+			background: #ffffff;
+			border-radius: 50%;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+		}
+
+		/* Section Titles */
+		.section-heading {
+			font-size: clamp(1.85rem, 3.6vw, 2.75rem);
+		}
+
+		.consultation-title {
+			font-size: clamp(1.5rem, 3vw, 2.3rem);
+		}
+
+		.phone-number {
+			font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+		}
+
+		/* Responsive Adjustments for Mobile & Tablets */
+		@media (max-width: 991.98px) {
+			.bgheader {
+				background-size: 130px auto, 190px auto;
+				background-position: bottom left, top right;
+			}
+			.navbar-collapse {
+				background-color: #121318;
+				padding: 1.5rem;
+				border-radius: 12px;
+				margin-top: 1rem;
+				border: 1px solid rgba(212, 175, 55, 0.2);
+			}
+			.treatment-img {
+				height: 160px;
+			}
+		}
+
+		@media (max-width: 575.98px) {
+			.bgheader {
+				background-size: 90px auto, 130px auto;
+			}
+			.treatment-img {
+				height: 140px;
+			}
+			.navbar-logo {
+				height: 44px;
+			}
+			.feature-item {
+				padding: 0.85rem !important;
+			}
+			.feature-icon-wrapper {
+				width: 48px;
+				height: 48px;
+				min-width: 48px;
+			}
+			.feature-icon-wrapper img {
+				width: 24px !important;
+				height: 24px !important;
+			}
+		}
+	</style>
 </head>
 <body>
 
-
-	<nav class="navbar navbar-expand-lg bg-black">
-		<div class="container-fluid ">
-			<a class="navbar-brand" href="https://radianzskincare.com/"><img src="dummy-logo.png" width="150" height="120" class="w-100" alt="logo"></a>
-			<button class="navbar-toggler bg-warning" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	<!-- Navigation Bar -->
+	<nav class="navbar navbar-expand-lg sticky-top border-bottom border-secondary border-opacity-25 py-2">
+		<div class="container">
+			<a class="navbar-brand py-1" href="#">
+				<img src="dummy-logo.png" alt="Radianz Skincare Logo" class="navbar-logo">
+			</a>
+			
+			<button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-					<li><a class="nav-link  fw-medium fs-5 mx-2 text-warning" href="">Facial Treatments</a></li>
-					<li><a class="nav-link  fw-medium fs-5 mx-2 text-warning" href="">Laser Hair Removal</a></li>
-					<li><a class="nav-link  fw-medium fs-5 mx-2 text-warning" href="">Why Choose Us</a> </li>
-					<li><a class="nav-link  fw-medium fs-5 mx-2 text-warning" href="">Why Skincare Matters</a></li>
-					<li><a class="nav-link  fw-medium fs-5 mx-2 text-warning" href="">Why Skincare Matters</a></li>
+				<ul class="navbar-nav mx-auto mb-3 mb-lg-0 text-center text-lg-start gap-1 gap-lg-2">
+					<li class="nav-item">
+						<a class="nav-link" href="#treatments">Facial Treatments</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#laser-removal">Laser Hair Removal</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#why-choose-us">Why Choose Us</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#skincare-matters">Why Skincare Matters</a>
+					</li>
 				</ul>
-				<div class="d-grid custom-margin-right">
-					<a href="#contact"><button class="btn btn-warning text-white px-5 py-2 fw-medium fs-5">Contact Us</button></a>
+
+				<div class="d-flex justify-content-center justify-content-lg-end pt-2 pt-lg-0">
+					<a href="#contact" class="btn btn-gold px-4 py-2 text-decoration-none">Contact Us</a>
 				</div>
 			</div>
 		</div>
 	</nav>
 
-	<!--Header-->
-
-	<div class="container-fluid text-center bg-black text-white bgheader">
-
-		<div class="d-lg-flex d-flex flex-wrap-reverse">
-			<div class="col-12 col-lg-6 mx-0">
-				<h1 class="text-white py-5 ms-5 display-4 fw-bold text-start">Achieve Beautiful, <span class="text-gold">Radiant Skin</span>  with Our Professional Skincare Treatments</h1>
-				<p class="text-secondary mb-5 fs-5 p-5 text-start">At Radianz, we focus on personalized care, ensuring every treatment plan is designed to suit your individual needs. Join our growing community of satisfied clients who have experienced transformative results.</p>
-
-
-
-			</div>
-			<div class="col-12 col-sm-10 mx-sm-auto col-lg-6">
-
-				<img src="heroimg2.jpg" class="border rounded-3 img-fluid mt-5" style="width: 90%;">
-
-
-			</div>
-		</div>
-	</div>
-
-	<!--Facial Treatments-->
-
-	<div class="row">
-		<h2 class="text-center fw-bold mb-4 mt-5 display-4 bg-white">Facial Treatments</h2>
-	</div>
-
-
-
-	<!--1st-->
-
-	<div class="container-fluid bg-white">
-
-		<div class="row">
-			<div class="col-4 bg-white">
-				<div class="card ms-4" style="width:95%;">
-					<div class="card-body bg-white">
-						<h2 class="card-tittle text-center">Acne Treatment</h2>
-						<div class="before-after-images d-flex justify-content-center align-items-center mb-3">
-							<img src="Acne-Before.jpg" class="img-card-top me-2" alt="loading" style="width: 49%; height: 200px; object-fit: cover;">
-							<img src="Acne-After.jpg" class="img-card-top" alt="loading" style="width: 49%; height: 200px; object-fit: cover;">
-						</div>
-						<p class="card-text text-center mb-0 fs-5 text-muted">Clear up breakouts with treatments that target acne at its source. We use a combination of exfoliation, deep cleansing, and advanced light therapies to reduce acne and prevent future breakouts.</p>
-					</div>
-				</div>
-			</div>
-
-			<!--2nd-->
-
-			<div class="col-4 bg-white">
-				<div class="card ms-4"style="width:95%;">
-					<div class="card-body">
-						<h2 class="card-tittle text-center">Anti-Aging Treatments</h2>
-						<div class="before-after-images d-flex justify-content-center align-items-center mb-3">
-							<img src="Anti-Aging-Before.jpg" class="img-card-top me-2" alt="loading" style="width: 49%; height: 200px; object-fit: cover;">
-							<img src="Anti-aging-After.jpg" class="img-card-top" alt="loading" style="width: 49%; height: 200px; object-fit: cover;">
-						</div>
-						
-						<p class="card-text text-center mb-5 fs-5 text-muted">Turn back the clock with our specialized treatments that reduce the appearance of wrinkles, fine lines, and age spots.</p>
-					</div>
-				</div>
-			</div>
-
-			<!--3rd-->
-
-			<div class="col-4 bg-white">
-				<div class="card ms-4" style="width: 95%;">
-					<div class="card-body">
-						<h3 class="card-tittle text-center">Hyperpigmentation Treatment</h3>
-						<div class="before-after-images d-flex justify-content-center align-items-center mb-3">
-							<img src="Hyperpigmentation-Before.jpg" class="img-card-top me-2" alt="loading" style="width: 49%; height: 200px; object-fit: cover;">
-							<img src="Hyperpigmentation-After.jpg" class="img-card-top" alt="loading" style="width: 49%; height: 200px; object-fit: cover;">
-						</div>
-						<p class="card-text text-center mb-5 fs-5 text-muted">Target stubborn dark spots and uneven skin tone with our lightening and brightening treatments.</p>
-					</div>
-				</div>
-			</div>
-
-			<!--4th-->
-
-			<div class="row mt-4">
-				<div class="col-4 bg-white">
-					<div class="card ms-4" style="width:95%;">
-						<div class="card-body">
-							<h2 class="card-tittle text-center">Hydrafacial</h2>
-							<div class="before-after-images d-flex justify-content-center align-items-center mb-3">
-								<img src="Hydrafacial-Before.jpg" class="img-card-top me-2" alt="loading" style="width: 49%; height: 200px; object-fit: cover;">
-								<img src="Hydrafacial-After.jpg" class="img-card-top" alt="loading" style="width: 49%; height: 200px; object-fit: cover;">
-							</div>
-							<p class="card-text text-center text-muted fs-5">Clear up breakouts with treatments that target acne at its source. We use a combination of exfoliation, deep cleansing, and advanced light therapies to reduce acne and prevent future breakouts.</p>
-						</div>
+	<!-- Header / Hero Section -->
+	<header class="hero-section bgheader text-white position-relative py-4 py-md-5 overflow-hidden">
+		<div class="container py-3 py-lg-4">
+			<div class="row align-items-center g-4 g-lg-5 flex-column-reverse flex-lg-row">
+				<!-- Left Column: Content -->
+				<div class="col-12 col-lg-6 text-center text-lg-start">
+					<span class="text-gold text-uppercase fw-semibold tracking-wider small d-inline-block mb-2">✦ Clinical Aesthetic Excellence</span>
+					<h1 class="hero-title text-white fw-bold mb-3">
+						Achieve Beautiful, <span class="text-gold-gradient">Radiant Skin</span> with Our Professional Skincare Treatments
+					</h1>
+					<p class="text-secondary fs-5 mb-4 mx-auto mx-lg-0 lh-base" style="max-width: 540px;">
+						At Radianz, we focus on personalized care, ensuring every treatment plan is designed to suit your individual needs. Join our growing community of satisfied clients who have experienced transformative results.
+					</p>
+					<div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+						<a href="#contact" class="btn btn-gold px-4 py-2 fs-6">Book Free Consultation</a>
+						<a href="#treatments" class="btn btn-outline-gold px-4 py-2 fs-6">Explore Services</a>
 					</div>
 				</div>
 
-				<!--5th-->
-
-				<div class="col-4 bg-white">
-					<div class="card ms-4" style="width: 95%;">
-						<div class="card-body">
-							<h2 class="card-tittle text-center">Microneedling</h2>
-							<div class="before-after-images d-flex justify-content-center align-items-center mb-3">
-								<img src="Microneedling-Before.jpg" class="img-card-top me-2" alt="loading" style="width: 49%; height: 200px; object-fit: cover;">
-								<img src="Microneedling-After.jpg" class="img-card-top" alt="loading" style="width: 49%; height: 200px; object-fit: cover;">
-							</div>
-							<p class="card-text text-center text-muted fs-5">Clear up breakouts with treatments that target acne at its source. We use a combination of exfoliation, deep cleansing, and advanced light therapies to reduce acne and prevent future breakouts.</p>
-						</div>
-					</div>
-				</div>
-
-				<!--6th-->
-
-				<div class="col-4 bg-white">
-					<div class="card ms-4" style="width:95%;">
-						<div class="card-body">
-							<h2 class="card-tittle text-center">Custom Facial</h2>
-							<div class="before-after-images d-flex justify-content-center align-items-center mb-3">
-								<img src="custom-facial-before.jpg" class="img-card-top me-2" alt="loading" style="width: 49%; height: 200px; object-fit: cover;">
-								<img src="custom-facial-after.jpg" class="img-card-top" alt="loading" style="width: 49%; height: 200px; object-fit: cover;">
-							</div>
-							<p class="card-text text-center text-muted fs-5">Clear up breakouts with treatments that target acne at its source. We use a combination of exfoliation, deep cleansing, and advanced light therapies to reduce acne and prevent future breakouts.</p>
-						</div>
+				<!-- Right Column: Hero Image -->
+				<div class="col-12 col-sm-10 col-md-9 col-lg-6 mx-auto">
+					<div class="position-relative text-center">
+						<img src="heroimg2.jpg" alt="Radiant Skincare Clinic Model" class="hero-img img-fluid rounded-4">
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</header>
 
-
-<!--Why Choose Us-->
-
-<div class="container-fluid bg-dark mt-5 bgmiddle">
-	<div class="row">
-		<div class="col-6">
-			<div class="row">
-				<h2 class="text-warning text-center fw-bold pt-5 display-4">Why Choose Us?</h2>
+	<!-- Facial Treatments Section -->
+	<section id="treatments" class="py-5 bg-white">
+		<div class="container py-3 py-lg-4">
+			<div class="text-center mb-5">
+				<span class="text-gold text-uppercase fw-bold small tracking-wider">Before & After Results</span>
+				<h2 class="section-heading text-dark fw-bold mt-2 mb-3">Facial Treatments</h2>
+				<div class="gold-divider mx-auto mb-3"></div>
+				<p class="text-muted fs-6 mx-auto mb-0" style="max-width: 620px;">
+					Customized aesthetic procedures designed to purify, restore, and maintain your skin's natural beauty and radiance.
+				</p>
 			</div>
-			<div class="row">
-				<div class="text-white d-flex justify-content-center align-items-center ms-5">
-					<div class="col-2">
-						<div class="bg-white rounded-circle py-3">
-							<img src="professional.png" class=" p-1 w-75 ms-3">
-						</div>
-					</div>
-					<div class="col-10 ms-4">
-						<h2 class="text-white">Experienced Professionals</h2>
-						<p class="text-white">Our licensed and certified professionals are skilled in the latest techniques and technologies.</p>
 
+			<div class="row g-4">
+				<!-- 1. Acne Treatment -->
+				<div class="col-12 col-md-6 col-lg-4 d-flex">
+					<div class="card treatment-card w-100 rounded-4 shadow-sm p-3 d-flex flex-column">
+						<h3 class="card-title text-center fs-4 fw-bold mb-3">Acne Treatment</h3>
+						<div class="row g-2 mb-3">
+							<div class="col-6 position-relative">
+								<span class="badge bg-dark bg-opacity-75 text-white position-absolute top-0 start-0 m-2 rounded-pill badge-floating">Before</span>
+								<img src="Acne-Before.jpg" class="treatment-img" alt="Acne Treatment Before">
+							</div>
+							<div class="col-6 position-relative">
+								<span class="badge bg-gold text-dark fw-bold position-absolute top-0 start-0 m-2 rounded-pill badge-floating">After</span>
+								<img src="Acne-After.jpg" class="treatment-img" alt="Acne Treatment After">
+							</div>
+						</div>
+						<p class="card-text text-center text-muted fs-6 mt-auto">
+							Clear up breakouts with treatments that target acne at its source. We combine exfoliation, deep cleansing, and targeted light therapies to reduce inflammation and prevent future blemishes.
+						</p>
 					</div>
 				</div>
 
-				<!--2nd-->
-
-				<div class="row">
-					<div class="text-white d-flex justify-content-center align-items-center ms-5 mt-5">
-						<div class="col-2">
-							<div class="bg-white rounded-circle py-3">
-								<img src="profile.png" class=" p-1 w-75 ms-3">
+				<!-- 2. Anti-Aging Treatments -->
+				<div class="col-12 col-md-6 col-lg-4 d-flex">
+					<div class="card treatment-card w-100 rounded-4 shadow-sm p-3 d-flex flex-column">
+						<h3 class="card-title text-center fs-4 fw-bold mb-3">Anti-Aging Treatments</h3>
+						<div class="row g-2 mb-3">
+							<div class="col-6 position-relative">
+								<span class="badge bg-dark bg-opacity-75 text-white position-absolute top-0 start-0 m-2 rounded-pill badge-floating">Before</span>
+								<img src="Anti-Aging-Before.jpg" class="treatment-img" alt="Anti Aging Before">
+							</div>
+							<div class="col-6 position-relative">
+								<span class="badge bg-gold text-dark fw-bold position-absolute top-0 start-0 m-2 rounded-pill badge-floating">After</span>
+								<img src="Anti-aging-After.jpg" class="treatment-img" alt="Anti Aging After">
 							</div>
 						</div>
-						<div class="col-10 ms-4">
-							<h2 class="text-white">Personalized Approach</h2>
-							<p class="text-white">Each treatment is customized to your unique skin and hair removal needs.</p>
+						<p class="card-text text-center text-muted fs-6 mt-auto">
+							Turn back the clock with specialized rejuvenation protocols that visibly reduce fine lines, firm lax contours, and restore youthful skin elasticity and firmness.
+						</p>
+					</div>
+				</div>
 
+				<!-- 3. Hyperpigmentation Treatment -->
+				<div class="col-12 col-md-6 col-lg-4 d-flex">
+					<div class="card treatment-card w-100 rounded-4 shadow-sm p-3 d-flex flex-column">
+						<h3 class="card-title text-center fs-4 fw-bold mb-3">Hyperpigmentation</h3>
+						<div class="row g-2 mb-3">
+							<div class="col-6 position-relative">
+								<span class="badge bg-dark bg-opacity-75 text-white position-absolute top-0 start-0 m-2 rounded-pill badge-floating">Before</span>
+								<img src="Hyperpigmentation-Before.jpg" class="treatment-img" alt="Hyperpigmentation Before">
+							</div>
+							<div class="col-6 position-relative">
+								<span class="badge bg-gold text-dark fw-bold position-absolute top-0 start-0 m-2 rounded-pill badge-floating">After</span>
+								<img src="Hyperpigmentation-After.jpg" class="treatment-img" alt="Hyperpigmentation After">
+							</div>
+						</div>
+						<p class="card-text text-center text-muted fs-6 mt-auto">
+							Target stubborn sun damage, melasma, and uneven tone with medical-grade brightening peels and laser therapies for a luminous, uniform complexion.
+						</p>
+					</div>
+				</div>
+
+				<!-- 4. Hydrafacial -->
+				<div class="col-12 col-md-6 col-lg-4 d-flex">
+					<div class="card treatment-card w-100 rounded-4 shadow-sm p-3 d-flex flex-column">
+						<h3 class="card-title text-center fs-4 fw-bold mb-3">Hydrafacial</h3>
+						<div class="row g-2 mb-3">
+							<div class="col-6 position-relative">
+								<span class="badge bg-dark bg-opacity-75 text-white position-absolute top-0 start-0 m-2 rounded-pill badge-floating">Before</span>
+								<img src="Hydrafacial-Before.jpg" class="treatment-img" alt="Hydrafacial Before">
+							</div>
+							<div class="col-6 position-relative">
+								<span class="badge bg-gold text-dark fw-bold position-absolute top-0 start-0 m-2 rounded-pill badge-floating">After</span>
+								<img src="Hydrafacial-After.jpg" class="treatment-img" alt="Hydrafacial After">
+							</div>
+						</div>
+						<p class="card-text text-center text-muted fs-6 mt-auto">
+							Experience instant, glowing hydration with our 3-step vortex cleansing, gentle acid peeling, painless extraction, and antioxidant serum infusion.
+						</p>
+					</div>
+				</div>
+
+				<!-- 5. Microneedling -->
+				<div class="col-12 col-md-6 col-lg-4 d-flex">
+					<div class="card treatment-card w-100 rounded-4 shadow-sm p-3 d-flex flex-column">
+						<h3 class="card-title text-center fs-4 fw-bold mb-3">Microneedling</h3>
+						<div class="row g-2 mb-3">
+							<div class="col-6 position-relative">
+								<span class="badge bg-dark bg-opacity-75 text-white position-absolute top-0 start-0 m-2 rounded-pill badge-floating">Before</span>
+								<img src="Microneedling-Before.jpg" class="treatment-img" alt="Microneedling Before">
+							</div>
+							<div class="col-6 position-relative">
+								<span class="badge bg-gold text-dark fw-bold position-absolute top-0 start-0 m-2 rounded-pill badge-floating">After</span>
+								<img src="Microneedling-After.jpg" class="treatment-img" alt="Microneedling After">
+							</div>
+						</div>
+						<p class="card-text text-center text-muted fs-6 mt-auto">
+							Activate your body's natural collagen production to diminish acne scars, reduce pore size, and refine overall skin texture and tone.
+						</p>
+					</div>
+				</div>
+
+				<!-- 6. Custom Facial -->
+				<div class="col-12 col-md-6 col-lg-4 d-flex">
+					<div class="card treatment-card w-100 rounded-4 shadow-sm p-3 d-flex flex-column">
+						<h3 class="card-title text-center fs-4 fw-bold mb-3">Custom Facial</h3>
+						<div class="row g-2 mb-3">
+							<div class="col-6 position-relative">
+								<span class="badge bg-dark bg-opacity-75 text-white position-absolute top-0 start-0 m-2 rounded-pill badge-floating">Before</span>
+								<img src="custom-facial-before.jpg" class="treatment-img" alt="Custom Facial Before">
+							</div>
+							<div class="col-6 position-relative">
+								<span class="badge bg-gold text-dark fw-bold position-absolute top-0 start-0 m-2 rounded-pill badge-floating">After</span>
+								<img src="custom-facial-after.jpg" class="treatment-img" alt="Custom Facial After">
+							</div>
+						</div>
+						<p class="card-text text-center text-muted fs-6 mt-auto">
+							Indulge in a bespoke facial designed after comprehensive skin analysis, combining targeted masks, lymphatic massage, and nutrient concentrates.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Why Choose Us Section -->
+	<section id="why-choose-us" class="py-5 bgmiddle text-white position-relative overflow-hidden">
+		<div class="container py-3 py-lg-4">
+			<div class="row align-items-center g-4 g-lg-5">
+				<!-- Left Features List -->
+				<div class="col-12 col-lg-6">
+					<div class="text-start mb-4">
+						<span class="text-gold text-uppercase fw-semibold tracking-wider small">The Radianz Standard</span>
+						<h2 class="section-heading text-warning fw-bold mt-2 mb-3">Why Choose Us?</h2>
+						<div class="gold-divider mb-4"></div>
+					</div>
+
+					<div class="d-flex flex-column gap-3">
+						<!-- Feature 1 -->
+						<div class="feature-item d-flex align-items-center gap-3 p-3 rounded-4">
+							<div class="feature-icon-wrapper d-flex align-items-center justify-content-center flex-shrink-0">
+								<img src="professional.png" alt="Experienced Professionals" width="30" height="30">
+							</div>
+							<div>
+								<h4 class="text-white fs-5 fw-bold mb-1">Experienced Professionals</h4>
+								<p class="text-secondary small mb-0">Our licensed and certified professionals are skilled in the latest techniques and clinical technologies.</p>
+							</div>
+						</div>
+
+						<!-- Feature 2 -->
+						<div class="feature-item d-flex align-items-center gap-3 p-3 rounded-4">
+							<div class="feature-icon-wrapper d-flex align-items-center justify-content-center flex-shrink-0">
+								<img src="profile.png" alt="Personalized Approach" width="30" height="30">
+							</div>
+							<div>
+								<h4 class="text-white fs-5 fw-bold mb-1">Personalized Approach</h4>
+								<p class="text-secondary small mb-0">Each treatment is custom-formulated to your unique skin and aesthetic goals for optimal safety and longevity.</p>
+							</div>
+						</div>
+
+						<!-- Feature 3 -->
+						<div class="feature-item d-flex align-items-center gap-3 p-3 rounded-4">
+							<div class="feature-icon-wrapper d-flex align-items-center justify-content-center flex-shrink-0">
+								<img src="shield.png" alt="Safe & Effective" width="30" height="30">
+							</div>
+							<div>
+								<h4 class="text-white fs-5 fw-bold mb-1">Safe & Effective</h4>
+								<p class="text-secondary small mb-0">We use FDA-approved medical technologies and premium medical-grade products to ensure safety and comfort.</p>
+							</div>
+						</div>
+
+						<!-- Feature 4 -->
+						<div class="feature-item d-flex align-items-center gap-3 p-3 rounded-4">
+							<div class="feature-icon-wrapper d-flex align-items-center justify-content-center flex-shrink-0">
+								<img src="laser-surgery.png" alt="State of the Art Equipment" width="30" height="30">
+							</div>
+							<div>
+								<h4 class="text-white fs-5 fw-bold mb-1">State-of-the-Art Equipment</h4>
+								<p class="text-secondary small mb-0">Our clinic is equipped with the most advanced aesthetic devices to deliver remarkable, lasting outcomes.</p>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<!--3rd-->
-
-				<div class="row">
-					<div class="text-white d-flex justify-content-center align-items-center ms-5 mt-5">
-						<div class="col-2">
-							<div class="bg-white rounded-circle py-3">
-								<img src="shield.png" class=" p-1 w-75 ms-3">
-							</div>
-						</div>
-						<div class="col-10 ms-4">
-							<h2 class="text-white">Safe & Effective</h2>
-							<p class="text-white">We use FDA-approved technologies and products to ensure your safety and satisfaction.</p>
-
-						</div>
+				<!-- Right Feature Image -->
+				<div class="col-12 col-lg-6 text-center">
+					<div class="position-relative mx-auto" style="max-width: 520px;">
+						<img src="story-image-compressed.jpg" alt="Our Skincare Practice" class="img-fluid rounded-4 shadow-lg border border-secondary border-opacity-25 w-100" style="max-height: 520px; object-fit: cover;">
 					</div>
 				</div>
+			</div>
+		</div>
+	</section>
 
-				<!--4th-->
-
-				<div class="row">
-					<div class="text-white d-flex justify-content-center align-items-center ms-5 mt-5 mb-5">
-						<div class="col-2">
-							<div class="bg-white rounded-circle py-3">
-								<img src="laser-surgery.png" class=" p-1 w-75 ms-3">
+	<!-- Why Skincare Matters Section -->
+	<section id="skincare-matters" class="py-5 bg-white">
+		<div class="container py-3 py-lg-4">
+			<div class="row align-items-center g-4 g-lg-5">
+				<div class="col-12 col-lg-5 text-center">
+					<img src="benefit-image.jpg" alt="Benefits of Skincare" class="img-fluid rounded-4 shadow-sm w-100" style="max-height: 480px; object-fit: cover;">
+				</div>
+				<div class="col-12 col-lg-7 text-center text-lg-start">
+					<span class="text-gold text-uppercase fw-bold small tracking-wider">Health & Longevity</span>
+					<h2 class="section-heading text-dark fw-bold mt-2 mb-3">Why Skincare Matters.</h2>
+					<div class="gold-divider mb-4 mx-auto mx-lg-0"></div>
+					<p class="fs-5 text-muted mb-4 lh-lg">
+						Investing in professional skincare is essential for maintaining youthful, healthy skin. Our treatments not only help with immediate concerns but also support long-term skin barrier health, giving you the confidence to feel radiant every day.
+					</p>
+					
+					<div class="row g-3 text-start">
+						<div class="col-12 col-sm-6">
+							<div class="p-3 bg-light rounded-3 border-start border-3 border-warning">
+								<h5 class="fw-bold mb-1 text-dark">Skin Barrier Repair</h5>
+								<p class="small text-muted mb-0">Protects against pollution, harsh UV rays, and oxidative stress.</p>
 							</div>
 						</div>
-						<div class="col-10 ms-4">
-							<h2 class="text-white">State-of-the-Art Equipment</h2>
-							<p class="text-white">Our clinic is equipped with the most advanced devices for optimal results.</p>
-
+						<div class="col-12 col-sm-6">
+							<div class="p-3 bg-light rounded-3 border-start border-3 border-warning">
+								<h5 class="fw-bold mb-1 text-dark">Collagen Stimulation</h5>
+								<p class="small text-muted mb-0">Promotes elasticity and deep dermal cellular regeneration.</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</section>
 
+	<!-- Laser Hair Removal Section -->
+	<section id="laser-removal" class="py-5 bg-dark text-white position-relative">
+		<div class="container py-3 py-lg-4">
+			<div class="row align-items-center g-4 g-lg-5">
+				<!-- Left Laser Image -->
+				<div class="col-12 col-lg-6 order-2 order-lg-1 text-center">
+					<img src="laser-epilation.jpg" alt="Laser Hair Removal Treatment" class="img-fluid rounded-4 shadow-lg w-100" style="max-height: 490px; object-fit: cover;">
+				</div>
 
+				<!-- Right Laser Text -->
+				<div class="col-12 col-lg-6 order-1 order-lg-2 text-center text-lg-start">
+					<span class="text-gold text-uppercase fw-semibold tracking-wider small">Permanent Hair Reduction</span>
+					<h2 class="section-heading text-warning fw-bold mt-2 mb-3">
+						Get Smooth, Hair-Free Skin with Advanced Laser Hair Removal
+					</h2>
+					<div class="gold-divider mb-4 mx-auto mx-lg-0"></div>
 
-
-
-<!--Right-->
-
-
-<div class="col-6">
-	<img src="story-image-compressed.jpg" class="img-fluid mt-2 rounded-5">
-</div>
-</div>
-</div>
-
-<!--Why Skincare Matters -->
-
-<div class="container-fluid bg-white">
-	<div class="row">
-		<div class="d-flex">
-			<div class="col-4">
-
-				<img src="benefit-image.jpg" class=" img-fluid mx-5 py-5">
-			</div>
-			<div class="col-8 ms-5 mt-5">
-				<h2 class="fw-bold ms-5 p-5 display-4 mt-5">Why Skincare Matters.</h2>
-				<div class="ms-5">
-					<p class="fs-5 ms-5">Investing in professional skincare is essential for maintaining youthful, healthy skin. Our treatments not only help with immediate concerns but also support long-term skin health, giving you the confidence to feel radiant every day.</p>
+					<p class="text-secondary fs-6 mb-3 lh-base">
+						Say goodbye to shaving, waxing, and plucking. At Radiance Skin & Laser Care, we offer safe and effective laser hair removal services that provide long-lasting results. Whether you’re looking to remove hair from your legs, face, underarms, or bikini line, our treatments are designed to work on all skin types and hair colors.
+					</p>
+					<p class="text-secondary fs-6 mb-4 lh-base">
+						Laser hair removal is the most efficient and cost-effective solution for permanent hair reduction, and it’s a treatment we perform with precision and care. Our team of specialists will ensure your comfort and safety throughout the process.
+					</p>
+					<a href="#contact" class="btn btn-gold px-4 py-2 fs-6">Schedule Your Laser Session</a>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
+	</section>
 
+	<!-- Footer / Contact Section -->
+	<footer id="contact" class="py-5 bg-gold text-dark position-relative">
+		<div class="container text-center">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-10 col-lg-8">
+					<p class="text-uppercase fw-bolder tracking-wider mb-2 consultation-title">
+						CALL TODAY FOR YOUR FREE CONSULTATION
+					</p>
 
-<div class="container-fluid bg-dark ">
-	<div class="row">
-		<div class="d-flex">
-			<div class="col-6 mt-5">
-				<img src="laser-epilation.jpg" class="img-fluid rounded-5 ms-5">
-			</div>
-			<div class="col-6 ms-4">
-				<h1 class="text-warning display-4 fw-bold mx-5 py-5">Get Smooth, Hair-Free Skin with Advanced Laser Hair Removal</h1>
-				<p class="text-white fs-5 mx-5 text-white">Say goodbye to shaving, waxing, and plucking. At Radiance Skin & Laser Care, we offer safe and effective laser hair removal services that provide long-lasting results. Whether you’re looking to remove hair from your legs, face, underarms, or bikini line, our treatments are designed to work on all skin types and hair colors.</p>
-				<p class="text-white fs-5 px-5 ">Laser hair removal is the most efficient and cost-effective solution for permanent hair reduction, and it’s a treatment we perform with precision and care. Our team of specialists will ensure your comfort and safety throughout the process.</p>
+					<div class="my-3">
+						<a href="tel:8182190317" class="btn btn-dark btn-lg px-4 py-2 rounded-pill fw-bold text-white shadow-sm d-inline-flex align-items-center gap-2 phone-number text-decoration-none">
+							<span>📞</span> (818) 219-0317
+						</a>
+					</div>
+
+					<div class="address-box my-3">
+						<p class="mb-1 fw-bold fs-5">7802 Florence Ave</p>
+						<p class="mb-0 fw-bold fs-5">Downey, CA 90240</p>
+					</div>
+
+					<hr class="my-4 border-dark opacity-25">
+					<p class="small mb-0 text-dark opacity-75">
+						© 2026 Radianz Skincare. All rights reserved. Crafted for excellence and beauty.
+					</p>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
+	</footer>
 
-<!--Footer -->
-
-<footer class="py-4 bg-gold">
-	<div class="container text-center">
-		<p class="mb-2 fw-bold" style="font-size: 2rem;">CALL TODAY FOR YOUR FREE CONSULTATION</p>
-		<p class="mb-2 fw-bold" style="font-size: 1.75rem">(818) 219-0317</p>
-		<p class="mb-2 fw-bold" style="font-size:1.25rem">7802 Florence Ave</p>
-		<p class="mb-2 fw-bold" style="font-size:1.25rem">Downey, CA 90240</p>
-	</div>
-</footer>
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap 5.3.3 Bundle JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
